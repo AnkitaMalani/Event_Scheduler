@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { BrowserRouter as Router,Routes,Route } from 'react-router'
 import MainLayout from './layout/MainLayout'
+import Home from './pages/Home'
+import EventPage from './pages/EventPage'
 
 function App() {
 
@@ -9,7 +11,8 @@ function App() {
      <Router>
       <Routes>
         <Route path="/" element={<MainLayout />}>
-
+           <Route index element={<Home />} />
+          <Route path='/event' element={<EventPage />} />
         </Route>
       </Routes>
      </Router>
