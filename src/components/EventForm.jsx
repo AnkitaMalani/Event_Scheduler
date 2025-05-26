@@ -22,8 +22,6 @@ const EventForm = () => {
     });
   };
 
-  //im a comment
-
   return (
     <section className="flex flex-col items-center gap-4 border-2 rounded-lg p-4 mx-8">
       <h2 className="text-4xl">Add a new event!</h2>
