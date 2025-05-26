@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, Navigate } from "react-router";
+// Import function that sends POST method to register endpoint
 import { signUp } from "../data/auth";
 
 const SignUp = () => {
@@ -16,8 +17,6 @@ const SignUp = () => {
     // Define useState for redirecting
 
     const [redirect, setRedirect] = useState(false);
-
-    // On submission, send a POST request to the register endpoint on submission
 
     const handleChange = (e) =>
         setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
