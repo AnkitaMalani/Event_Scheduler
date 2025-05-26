@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, Navigate } from "react-router";
+import { signUp } from "../data/auth";
 
 const SignUp = () => {
     const [{ firstName, lastName, email, password, confirmPassword }, setForm] =
@@ -11,6 +12,12 @@ const SignUp = () => {
             confirmPassword: "",
         });
     const [loading, setLoading] = useState(false);
+
+    // Define useState for redirecting
+
+    const [redirect, setRedirect] = useState(false);
+
+    // On submission, send a POST request to the register endpoint on submission
 
     const handleChange = (e) =>
         setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -33,13 +40,25 @@ const SignUp = () => {
 
             setLoading(true);
 
-            console.log(firstName, lastName, email, password, confirmPassword);
+            // Calling signup function imported from auth.js
+            await signUp({ firstName, lastName, email, password });
+
+            // Switch boolean after successful signup
+            setRedirect(true);
+
+            // console.log(firstName, lastName, email, password, confirmPassword);
         } catch (error) {
             console.error(error);
         } finally {
             setLoading(false);
         }
     };
+
+    // Redirect the user to the sign in page if everything goes alright
+
+    if (redirect) return <Navigate to="/auth/login" />;
+
+    // Render form for signing up
 
     return (
         <form
@@ -57,7 +76,7 @@ const SignUp = () => {
                         <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
                     </svg>
                     <input
-                        name="'firstName"
+                        name="firstName"
                         value={firstName}
                         onChange={handleChange}
                         className="grow"
@@ -74,7 +93,7 @@ const SignUp = () => {
                         <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
                     </svg>
                     <input
-                        name="'lastName"
+                        name="lastName"
                         value={lastName}
                         onChange={handleChange}
                         className="grow"
@@ -93,7 +112,7 @@ const SignUp = () => {
                     <path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
                 </svg>
                 <input
-                    name="'email"
+                    name="email"
                     value={email}
                     onChange={handleChange}
                     className="grow"
@@ -115,7 +134,7 @@ const SignUp = () => {
                         />
                     </svg>
                     <input
-                        name="'password"
+                        name="password"
                         value={password}
                         onChange={handleChange}
                         type="password"
@@ -137,7 +156,7 @@ const SignUp = () => {
                         />
                     </svg>
                     <input
-                        name="'confirmPassword"
+                        name="confirmPassword"
                         value={confirmPassword}
                         onChange={handleChange}
                         type="password"
