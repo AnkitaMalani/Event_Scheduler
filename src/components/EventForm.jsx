@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { createEvent } from "../utils/crudOperations";
 
-const EventForm = ({ setForms }) => {
+const EventForm = () => {
   const [form, setForm] = useState({
     title: "",
     description: "",
@@ -13,21 +14,17 @@ const EventForm = ({ setForms }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newForm = { ...form, _id: crypto.randomUUID() };
-    setForms((prev) => {
-      const updatedDucks = [...prev, newDuck];
-      localStorage.setItem("ducks", JSON.stringify(updatedDucks));
-      return updatedDucks;
-    });
+    createEvent(form.title, form.description, form.location);
     setForm({
-      name: "",
-      imgUrl: "",
-      quote: "",
+      title: "",
+      description: "",
+      location: "",
     });
   };
+
   return (
     <section className="flex flex-col items-center gap-4 border-2 rounded-lg p-4 mx-8">
-      <h2 className="text-4xl">Add a new duck to my pond!</h2>
+      <h2 className="text-4xl">Add a new event!</h2>
       <form
         onSubmit={handleSubmit}
         id="add-form"
@@ -35,33 +32,33 @@ const EventForm = ({ setForms }) => {
         <label className="w-full flex gap-2 items-baseline">
           <span className="text-xl">Name:</span>
           <input
-            value={form.name}
+            value={form.title}
             onChange={handleChange}
-            name="name"
+            name="title"
             type="text"
-            placeholder="What is your duck's name?"
+            placeholder="Name of the Event"
             className="bg-inherit border-solid border-2 border-slate-700 rounded-lg p-2 grow"
           />
         </label>
         <label className="w-full flex gap-2 items-baseline">
-          <span className="text-xl">Image:</span>
+          <span className="text-xl">Description for the event</span>
           <input
-            value={form.imgUrl}
+            value={form.description}
             onChange={handleChange}
-            name="imgUrl"
-            // type='url'
-            placeholder="What does your duck look like?"
+            name="description"
+            type="text"
+            placeholder="Short description about the event"
             className="bg-inherit border-solid border-2 border-slate-700 rounded-lg p-2 w-full"
           />
         </label>
         <label className="w-full flex gap-2 items-baseline">
-          <span className="text-xl">Quote:</span>
+          <span className="text-xl">Description for the event</span>
           <input
-            value={form.quote}
+            value={form.location}
             onChange={handleChange}
-            name="quote"
+            name="location"
             type="text"
-            placeholder="What does your duck say?"
+            placeholder="Where does the Event take place?"
             className="bg-inherit border-solid border-2 border-slate-700 rounded-lg p-2 w-full"
           />
         </label>
@@ -69,10 +66,10 @@ const EventForm = ({ setForms }) => {
           id="submit-btn"
           type="submit"
           className="bg-green-600 p-2 rounded-lg font-bold">
-          Add duck
+          Add event
         </button>
       </form>
     </section>
   );
 };
-export default DuckForm;
+export default EventForm;

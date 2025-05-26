@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import EventForm from "../components/EventForm";
 
 const Home = () => {
   const [event, setEvent] = useState([]);
@@ -16,7 +17,11 @@ const Home = () => {
       }
     };
   });
-  return <div></div>;
+  return (
+    <div>
+      <EventForm setEvents={setEvent} />
+    </div>
+  );
 };
 
 export default Home;
