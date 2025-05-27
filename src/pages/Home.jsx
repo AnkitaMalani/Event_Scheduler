@@ -23,9 +23,9 @@ const Home = (events) => {
   return (
     <section>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
-        {events.map((event)=>(
+        {/* {events.map((event)=>(
           <EventCard key={event._id}{...event}/>
-        ))}
+        ))} */}
       </div>
     </section>
   );

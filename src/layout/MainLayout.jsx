@@ -1,13 +1,14 @@
-import React from 'react'
-import { Outlet } from 'react-router'
+import React from "react";
+import { Outlet } from "react-router";
+import AuthContextProvider from "../context/AuthContextProvider";
 
 const MainLayout = () => {
-  return (
-    <>
-    <div>MainLayout</div>
-    <Outlet />
-    </>
-  )
-}
+    return (
+        <AuthContextProvider>
+            <div>MainLayout</div>
+            <Outlet />
+        </AuthContextProvider>
+    );
+};
 
-export default MainLayout
+export default MainLayout;
