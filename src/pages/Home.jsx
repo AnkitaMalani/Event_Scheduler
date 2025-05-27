@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import EventCard from "../components/EventCard";
+import EventBoard from "../components/EventBoard";
+import { getEvents } from "../data/event";
 
-const Home = (events) => {
-  const [event, setEvent] = useState([]);
+const Home = () => {
+  const [events, setEvent] = useState([]);
 
   useEffect(() => {
     let ignore = false;
@@ -21,13 +23,9 @@ const Home = (events) => {
     };
   }, []);
   return (
-    <section>
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
-        {events.map((event)=>(
-          <EventCard key={event._id}{...event}/>
-        ))}
-      </div>
-    </section>
+    <>
+    <EventBoard events={events} />
+    </>
   );
 };
 
