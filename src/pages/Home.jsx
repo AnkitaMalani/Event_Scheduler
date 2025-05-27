@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import EventCard from "../components/EventCard";
 import EventBoard from "../components/EventBoard";
 import { getEvents } from "../data/event";
+import EventForm from "../components/EventForm";
 
 const Home = () => {
   const [events, setEvent] = useState([]);
@@ -24,7 +25,8 @@ const Home = () => {
   }, []);
   return (
     <>
-    <EventBoard events={events} />
+      <EventBoard events={events} />
+      <EventForm setEvent={setEvent} />
     </>
   );
 };
