@@ -18,6 +18,8 @@ const SignUp = () => {
 
     const [redirect, setRedirect] = useState(false);
 
+    // this function updates the form state by changing only the input field that was edited
+
     const handleChange = (e) =>
         setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
@@ -26,8 +28,6 @@ const SignUp = () => {
             e.preventDefault();
 
             if (
-                // !firstName ||
-                // !lastName ||
                 !email ||
                 !password ||
                 !confirmPassword
@@ -40,7 +40,6 @@ const SignUp = () => {
             setLoading(true);
 
             // Calling signup function imported from auth.js
-            // await signUp({ firstName, lastName, email, password });
             await signUp({ email, password });
 
             // Switch boolean after successful signup

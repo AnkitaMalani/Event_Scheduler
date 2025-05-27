@@ -11,6 +11,8 @@ const SignIn = () => {
     const [loading, setLoading] = useState(false);
     const { signedIn, setSignedIn, setCheckSession } = useAuth();
 
+    // this function updates the form state by changing only the input field that was edited
+
     const handleChange = (e) =>
         setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
@@ -44,6 +46,9 @@ const SignIn = () => {
     };
 
     if (signedIn) return <Navigate to="/eventboard" />;
+
+    // Render form for signing in
+
     return (
         <form
             className="my-5 md:w-1/2 mx-auto flex flex-col gap-3"
