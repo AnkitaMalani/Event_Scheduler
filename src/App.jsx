@@ -3,8 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router";
 import MainLayout from "./layout/MainLayout";
 import Home from "./pages/Home";
 import EventPage from "./pages/EventPage";
-
-
+import EventBoard from "./components/EventBoard";
 
 function App() {
   return (
@@ -13,8 +12,8 @@ function App() {
         <Routes>
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Home />} />
-            <Route path="event" element={<EventPage />} />
-           
+            <Route path="events/:eventId" element={<EventPage />} />
+            <Route path ="eventboard" element={<EventBoard />} />
           </Route>
         </Routes>
       </Router>
