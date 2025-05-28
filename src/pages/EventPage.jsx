@@ -8,7 +8,6 @@ const EventPage = () => {
   const navigate = useNavigate();
   console.log(eventId);
  
-
   const handleGoBack = () => {
     navigate(-1);
   };

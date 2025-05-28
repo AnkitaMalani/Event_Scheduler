@@ -15,6 +15,7 @@ const EventForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     createEvent(form.title, form.description, form.location);
+
     setForm({
       title: "",
       description: "",
@@ -28,7 +29,8 @@ const EventForm = () => {
       <form
         onSubmit={handleSubmit}
         id="add-form"
-        className="flex flex-col gap-4 w-3/4">
+        className="flex flex-col gap-4 w-3/4"
+      >
         <label className="w-full flex gap-2 items-baseline">
           <span className="text-xl">Name:</span>
           <input
@@ -65,7 +67,8 @@ const EventForm = () => {
         <button
           id="submit-btn"
           type="submit"
-          className="bg-green-600 p-2 rounded-lg font-bold">
+          className="bg-green-600 p-2 rounded-lg font-bold"
+        >
           Add event
         </button>
       </form>
