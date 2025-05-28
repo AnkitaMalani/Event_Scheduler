@@ -23,7 +23,7 @@ const EventForm = () => {
   };
 
   return (
-    <section className="flex flex-col items-center gap-4 border-2 rounded-lg p-4 mx-8">
+    <section className="flex flex-col items-center gap-4 w-1/2 border-2 rounded-lg p-4 mx-8">
       <h2 className="text-4xl">Add a new event!</h2>
       <form
         onSubmit={handleSubmit}
@@ -52,7 +52,7 @@ const EventForm = () => {
           />
         </label>
         <label className="w-full flex gap-2 items-baseline">
-          <span className="text-xl">Description for the event</span>
+          <span className="text-xl">Where is the location?</span>
           <input
             value={form.location}
             onChange={handleChange}
