@@ -39,12 +39,12 @@ const me = async () => {
 
   if (!token) throw new Error(`Failed to sign in. Please try again.`);
 
-  const res = await fetch(`${BASE_URL}/me`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  if (!res.ok) throw new Error(`${res.status}. Something went wrong!`);
+    const res = await fetch(`${BASE_URL}/auth/profile`, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    if (!res.ok) throw new Error(`${res.status}. Something went wrong!`);
 
   const data = await res.json();
   console.log(data);
